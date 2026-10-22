@@ -54,9 +54,6 @@
         <a :href="url || '#'" target="_blank" rel="noopener external nofollow sponsored" class="btn-primary">
           前往官网试用 / 购买 →
         </a>
-        <a v-if="backupUrl" :href="backupUrl" target="_blank" rel="noopener external nofollow sponsored" class="btn-secondary">
-          防失联入口
-        </a>
       </div>
     </div>
     
