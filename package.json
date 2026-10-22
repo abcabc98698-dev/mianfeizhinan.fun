@@ -1,0 +1,23 @@
+{
+  "name": "mianfeizhinan .fun",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "pagefind": "^1.5.2",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-pagefind": "^0.4.25"
+  },
+  "dependencies": {
+    "vue": "^3.5.44"
+  }
+}

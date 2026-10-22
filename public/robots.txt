@@ -1,0 +1,43 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /scripts/
+Disallow: /dist/
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Microsoft Bing
+User-agent: bingbot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+
+# Shenma / UC / Quark (神马搜索 / yisouspider)
+User-agent: yisouspider
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+# Sogou
+User-agent: Sogou web spider
+Allow: /
+
+# Apple & DuckDuckGo
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Canonical Sitemap Declaration
+Sitemap: https://mianfeizhinan.fun/sitemap.xml

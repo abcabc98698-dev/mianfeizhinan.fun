@@ -1,0 +1,60 @@
+# Apache Static Deployment Configuration for VitePress
+# Domain: mianfeizhinan.fun
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 强制 HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # 统一正式主域名 (301 重定向 www.mianfeizhinan.fun 至 mianfeizhinan.fun)
+  RewriteCond %{HTTP_HOST} ^www\.mianfeizhinan\.fun$ [NC]
+  RewriteRule ^(.*)$ https://mianfeizhinan.fun/$1 [R=301,L]
+
+  # 规范化 cleanUrls (例如 /recommend 映射至 /recommend.html 或 /recommend/index.html)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # 404 错误页
+  ErrorDocument 404 /404.html
+</IfModule>
+
+# Gzip / Brotli 压缩加速
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml font/truetype font/opentype application/vnd.ms-fontobject image/svg+xml
+</IfModule>
+
+# 静态资源缓存策略
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML 与 搜索索引文件保证即时更新，不设长缓存
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+
+  # CSS, JavaScript, 字体与图片设置长期缓存
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# 安全与隐私标头
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
