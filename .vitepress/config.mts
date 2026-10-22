@@ -19,7 +19,8 @@ export default defineConfig({
     ['meta', { property: 'og:site_name', content: '免费指南 (mianfeizhinan.fun)' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
-    ['meta', { name: 'robots', content: 'index, follow' }]
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'yandex-verification', content: '0c5bbc34b5d8e0b6' }]
   ],
 
   sitemap: {
